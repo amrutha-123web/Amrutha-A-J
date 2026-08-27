@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Techmiya Cafe — fresh coffee, delicious food and a cozy place to connect.">
+  <title>Techmiya Cafe | Coffee. Food. Good Vibes.</title>
+  <style>
+    :root{
+      --coffee:#5b321f;
+      --coffee-dark:#2d1a12;
+      --cream:#fff8ed;
+      --gold:#d99b45;
+      --text:#30231d;
+      --muted:#75665d;
+      --white:#fff;
+      --shadow:0 14px 40px rgba(54,34,23,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:var(--cream);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+    header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,248,237,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(91,50,31,.08)}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-size:1.55rem;font-weight:900;letter-spacing:-.5px;color:var(--coffee)}
+    .logo span{color:var(--gold)}
+    .nav-links{display:flex;gap:28px;align-items:center;font-weight:600;color:#55463e}
+    .nav-links a:hover{color:var(--coffee)}
+    .menu-btn{display:none;border:0;background:none;font-size:1.6rem;cursor:pointer;color:var(--coffee)}
+    .btn{display:inline-block;padding:13px 22px;border-radius:999px;background:var(--coffee);color:#fff;font-weight:800;transition:.25s;box-shadow:0 8px 20px rgba(91,50,31,.2)}
+    .btn:hover{transform:translateY(-2px);background:var(--coffee-dark)}
+    .btn-light{background:#fff;color:var(--coffee)}
+    .hero{min-height:100vh;padding:130px 0 70px;display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center;background:radial-gradient(circle at 85% 20%,#f7dfb8 0,transparent 27%),var(--cream)}
+    .eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:.78rem;font-weight:900;color:var(--gold);margin-bottom:15px}
+    h1{font-size:clamp(3rem,6vw,5.6rem);line-height:.98;letter-spacing:-3px;color:var(--coffee-dark);margin-bottom:24px}
+    .hero p{font-size:1.12rem;color:var(--muted);max-width:570px;margin-bottom:30px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-card{position:relative;min-height:510px;border-radius:34px;overflow:hidden;background:linear-gradient(145deg,#8d5635,#3b2016);box-shadow:var(--shadow);display:flex;align-items:flex-end;padding:28px}
+    .cup{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#c88a4d 0 12%,#704128 13% 30%,#f1c98c 31% 48%,#5a301f 49% 100%);left:50%;top:45%;transform:translate(-50%,-50%);box-shadow:0 25px 50px rgba(0,0,0,.3)}
+    .cup:after{content:"";position:absolute;width:65px;height:65px;border:15px solid #f1c98c;border-left-color:transparent;border-radius:50%;right:-53px;top:58px}
+    .hero-note{position:relative;background:rgba(255,255,255,.92);padding:17px 20px;border-radius:18px;width:100%;display:flex;justify-content:space-between;align-items:center}
+    .hero-note strong{display:block;color:var(--coffee-dark)}
+    .hero-note small{color:var(--muted)}
+    section{padding:95px 0}
+    .section-head{text-align:center;margin-bottom:48px}
+    .section-head h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-1.5px;color:var(--coffee-dark)}
+    .section-head p{color:var(--muted);margin:10px auto 0;max-width:620px}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .feature{background:#fff;padding:30px;border-radius:22px;box-shadow:var(--shadow)}
+    .icon{font-size:2rem;margin-bottom:14px}
+    .feature h3{margin-bottom:7px;color:var(--coffee-dark)}
+    .feature p{color:var(--muted)}
+    .menu{background:#fff}
+    .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .item{border:1px solid #eee1d2;border-radius:20px;padding:23px;background:#fffaf3}
+    .item-top{display:flex;justify-content:space-between;gap:10px}
+    .item h3{color:var(--coffee-dark)}
+    .price{font-weight:900;color:var(--coffee)}
+    .item p{color:var(--muted);font-size:.92rem;margin-top:8px}
+    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:55px;align-items:center}
+    .about-box{background:var(--coffee-dark);color:#fff;border-radius:30px;padding:45px;min-height:370px;display:flex;flex-direction:column;justify-content:center}
+    .about-box .big{font-size:5rem;font-weight:900;line-height:1;color:var(--gold)}
+    .about-copy h2{font-size:3rem;line-height:1.05;color:var(--coffee-dark);margin-bottom:18px}
+    .about-copy p{color:var(--muted);margin-bottom:18px}
+    .contact{background:#f2dfc2}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+    .contact-card{background:#fff;padding:32px;border-radius:24px}
+    .contact-card h3{margin-bottom:12px;color:var(--coffee-dark)}
+    .contact-card p{color:var(--muted);margin:5px 0}
+    footer{background:var(--coffee-dark);color:#e9d8c6;padding:35px 0}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .footer-inner strong{color:#fff}
+    @media(max-width:800px){
+      .nav-links{display:none;position:absolute;top:76px;left:0;width:100%;background:var(--cream);padding:20px;flex-direction:column;box-shadow:var(--shadow)}
+      .nav-links.show{display:flex}
+      .menu-btn{display:block}
+      .hero,.about,.contact-grid{grid-template-columns:1fr}
+      .hero{padding-top:115px}
+      .hero-card{min-height:390px}
+      .features,.menu-grid{grid-template-columns:1fr}
+      .footer-inner{flex-direction:column;text-align:center}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Techmiya<span> Cafe</span></a>
+        <button class="menu-btn" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Home</a>
+          <a href="#menu">Menu</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a href="#menu" class="btn">View Menu</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="home">
+      <div>
+        <div class="eyebrow">Welcome to Techmiya Cafe</div>
+        <h1>Your daily dose of coffee & good vibes.</h1>
+        <p>Freshly brewed coffee, tasty bites and a cozy atmosphere — made for conversations, work sessions and little moments worth enjoying.</p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn">Explore Our Menu</a>
+          <a href="#contact" class="btn btn-light">Find Us</a>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="Illustration of a cup of coffee">
+        <div class="cup"></div>
+        <div class="hero-note">
+          <div><strong>Freshly brewed</strong><small>Made with care, served with a smile.</small></div>
+          <span>☕</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Why Techmiya?</div>
+          <h2>Simple things, done well.</h2>
+          <p>A warm cafe experience built around great coffee, delicious food and friendly moments.</p>
+        </div>
+        <div class="features">
+          <article class="feature"><div class="icon">☕</div><h3>Fresh Coffee</h3><p>Rich, aromatic coffee prepared fresh for every cup.</p></article>
+          <article class="feature"><div class="icon">🥐</div><h3>Tasty Bites</h3><p>Comforting snacks and cafe favourites to pair with your drink.</p></article>
+          <article class="feature"><div class="icon">✨</div><h3>Good Vibes</h3><p>A relaxed space to catch up, focus, laugh and unwind.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our favourites</div>
+          <h2>Made to make you smile.</h2>
+          <p>Our sample menu can be edited with your real items and prices.</p>
+        </div>
+        <div class="menu-grid">
+          <article class="item"><div class="item-top"><h3>Cappuccino</h3><span class="price">₹120</span></div><p>Espresso, steamed milk and a smooth layer of foam.</p></article>
+          <article class="item"><div class="item-top"><h3>Cafe Latte</h3><span class="price">₹130</span></div><p>Silky steamed milk blended with rich espresso.</p></article>
+          <article class="item"><div class="item-top"><h3>Cold Coffee</h3><span class="price">₹150</span></div><p>Chilled, creamy and perfect for a refreshing break.</p></article>
+          <article class="item"><div class="item-top"><h3>Masala Chai</h3><span class="price">₹70</span></div><p>Comforting Indian tea with aromatic spices.</p></article>
+          <article class="item"><div class="item-top"><h3>Veg Sandwich</h3><span class="price">₹140</span></div><p>Fresh vegetables, creamy spread and toasted bread.</p></article>
+          <article class="item"><div class="item-top"><h3>Chocolate Brownie</h3><span class="price">₹110</span></div><p>Soft, chocolatey and made for a sweet little break.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about">
+        <div class="about-box">
+          <div class="big">100%</div>
+          <p>good coffee<br>good food<br>good company</p>
+        </div>
+        <div class="about-copy">
+          <div class="eyebrow">About us</div>
+          <h2>A cafe for your everyday moments.</h2>
+          <p>Techmiya Cafe is a welcoming spot where you can start your morning with coffee, meet friends over snacks or settle in for a productive afternoon.</p>
+          <p>Whether you stay for five minutes or five hours, we want every visit to feel easy, warm and memorable.</p>
+          <a href="#contact" class="btn">Visit Techmiya Cafe</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Come say hello</div>
+          <h2>We'd love to see you.</h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>📍 Location</h3>
+            <p>Techmiya Cafe</p>
+            <p>Add your full cafe address here</p>
+          </div>
+          <div class="contact-card">
+            <h3>🕒 Opening Hours</h3>
+            <p>Monday – Sunday: 9:00 AM – 10:00 PM</p>
+            <p>📞 +91 XXXXX XXXXX</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 <strong>Techmiya Cafe</strong>. All rights reserved.</div>
+      <div>Made with ☕ & good vibes.</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+    document.querySelectorAll("#navLinks a").forEach(link=>{
+      link.addEventListener("click",()=>document.getElementById("navLinks").classList.remove("show"));
+    });
+  </script>
+</body>
+</html>
